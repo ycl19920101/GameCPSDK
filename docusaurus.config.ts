@@ -1,10 +1,14 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {partnerConfig} from './partners/partner-registry';
 
-const config: Config = {
-  title: '猕猴桃SDK文档中心',
-  tagline: 'APP SDK · 小游戏SDK 对接文档',
+const partner = process.env.PARTNER || 'full';
+const config = partnerConfig[partner] ?? partnerConfig['full']!;
+
+export default {
+  title: config.title,
+  tagline: config.tagline,
   favicon: 'img/favicon.ico',
 
   future: {
@@ -12,13 +16,17 @@ const config: Config = {
   },
 
   url: 'https://ycl19920101.github.io',
-  baseUrl: '/GameCPSDK/',
+  baseUrl: config.baseUrl,
 
   onBrokenLinks: 'throw',
 
   organizationName: 'ycl19920101',
   projectName: 'GameCPSDK',
   trailingSlash: false,
+
+  customFields: {
+    partnerId: config.partnerId,
+  },
 
   i18n: {
     defaultLocale: 'zh-CN',
@@ -30,7 +38,8 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          sidebarPath: config.sidebarPath,
+          exclude: config.exclude,
         },
         blog: false,
         theme: {
@@ -46,39 +55,12 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: '猕猴桃SDK文档',
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'appSdkSidebar',
-          position: 'left',
-          label: 'APP SDK',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'miniGameSidebar',
-          position: 'left',
-          label: '小游戏 SDK',
-        },
-      ],
+      title: config.navbarTitle,
+      items: config.navbarItems as Preset.ThemeConfig['navbar']['items'],
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: '文档',
-          items: [
-            {
-              label: 'APP SDK',
-              to: '/docs/app-sdk/overview',
-            },
-            {
-              label: '小游戏 SDK',
-              to: '/docs/mini-game/overview',
-            },
-          ],
-        },
-      ],
+      links: config.footerLinks,
       copyright: `Copyright © ${new Date().getFullYear()} 猕猴桃`,
     },
     prism: {
@@ -87,6 +69,4 @@ const config: Config = {
       additionalLanguages: ['objectivec', 'json'],
     },
   } satisfies Preset.ThemeConfig,
-};
-
-export default config;
+} satisfies Config;
