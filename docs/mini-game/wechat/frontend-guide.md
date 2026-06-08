@@ -199,8 +199,8 @@ mhtSDK.creatOrder(params, (res) => {
 | serverId     | 区服ID            | String | 是            |
 | roleId       | 角色ID            | String | 是            |
 | roleName     | 角色名称            | String | 是            |
-| roleLevel    | 角色等级            | Int    | ==是（且不能为0）== |
-| roleVip      | VIP等级，==没有即传0== | String | 是            |
+| roleLevel    | 角色等级            | Int    | **是（且不能为0）** |
+| roleVip      | VIP等级，**没有即传0** | String | 是            |
 
 参考：[微信支付文档](https://developers.weixin.qq.com/minigame/dev/api/midas-payment/wx.requestMidasPayment.html)
 
