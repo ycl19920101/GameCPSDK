@@ -68,7 +68,7 @@ module.exports.MHTAPPID_TEST = '938c50183e697f68347573173fe90913';
 
 ### 一、配置环境接口 `getDomainEnv(0)`
 
-:::caution 注意
+:::caution[注意]
 默认都传 `0`，只有需要配合测试时才会改为 `1`。
 :::
 
@@ -79,7 +79,7 @@ module.exports.MHTAPPID_TEST = '938c50183e697f68347573173fe90913';
 ### 二、配置游戏状态接口 `getGameState(val)`
 切换游戏 的生产环境和测试环境。
 
-:::caution 注意
+:::caution[注意]
 切换游戏的服务器状态。体验版本可传1，正式上线切换为0
 :::
 
@@ -89,7 +89,7 @@ module.exports.MHTAPPID_TEST = '938c50183e697f68347573173fe90913';
 
 ### 三、登录接口 `login(callBack, data)`
 
-:::caution 注意
+:::caution[注意]
 调用登录前，请确保已按顺序完成接口一，二的调用
 :::
 
@@ -267,13 +267,13 @@ mhtSDK.reportedUser({
 });
 ```
 
-:::tip 提示
+:::tip[提示]
 每次创建角色上报，等级更新上报（如果等级更新快可10级20级上报，适当控制频率），角色信息更新上报。
 :::
 
 ### 七、上报付费行为 `reportPay(param)`
 
-:::caution 重要
+:::caution[重要]
 由于前端检测付费成功会有误差，付费上报方法应通过游戏方服务端发货通知后再进行上报，以确保付费上报的准确性。
 :::
 
@@ -388,7 +388,7 @@ mhtSDK.bandFhone(15539953770,123456 , res => {
 | phone | 手机号 |
 | vcode | 验证码 |
 
-:::tip 提示
+:::tip[提示]
 登录接口返回 `bindingPhone` 为 `true` 时表示此账号已绑定过。
 :::
 
@@ -404,7 +404,7 @@ mhtSDK.actionReport(
 | ---------- | ------ | ---- |
 | actionCode | 关键行为枚举 | 参考下表 |
 
-![[图片1.png]]
+![关键行为枚举表](/img/图片1.png)
 
 ### 七、上报创建角色 `reportCreateRole()`
 
